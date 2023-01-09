@@ -4,13 +4,21 @@
 function cppRun() {
     # $1 - parameter of source code filename, $2 - parameter of location of the source code
     # file starting from home/gregory/MEGA/programming/c++ directory
-    if [ -z "$2" ]
-	then
-	    echo "You haven't pased enoug arguments! You should pass name for the sourse code file without .cpp extension and location of it starting from your c++ file in this persice order!";
-    	else 
-            mkdir -p /home/gregory/MEGA/programming/c++/$2/executable;
-	    cd /home/gregory/MEGA/programming/c++/$2/executable;
-	    g++ /home/gregory/MEGA/programming/c++/$2/$1.cpp -o executable_$1;
-    	    ./executable_$1; 
-    fi
+	SOURCE_FILE=$1.cpp;
+	if [[-f "$SOURCE_FILE"]];
+		then
+			if [ -z "$1" ]
+				then
+	   				echo "You haven't pased source code .cpp file name!";
+    			else 
+            		mkdir -p /home/gregory/MEGA/programming/c++/$2/executable;
+	    			cd /home/gregory/MEGA/programming/c++/$2/executable;
+	    			g++ /home/gregory/MEGA/programming/c++/$2/$1.cpp -o executable_$1;
+    	    		./executable_$1; 
+    		fi
+    	else
+    		echo "In current directory there is no needed source code .cpp file!";
+	
+	fi
+    
 }
